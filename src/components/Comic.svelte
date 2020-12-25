@@ -31,14 +31,14 @@
 <section class="comic">
   <div class="panel-wrapper">
     {#each panelData as panel}
-      {#if panel.order === activePanel}
-        <div
-          class="panel-container"
-          in:fly={{ x: 2000, duration: 500 }}
-          out:fly={{ x: -2000, duration: 500 }}>
-          <Panel {panel} />
-        </div>
-      {/if}
+      <!-- {#if panel.order === activePanel} -->
+      <div
+        class="panel-container"
+        in:fly={{ y: 2000, duration: 500 }}
+        out:fly={{ y: -2000, duration: 500 }}>
+        <Panel {panel} />
+      </div>
+      <!-- {/if} -->
     {/each}
   </div>
 </section>
@@ -50,10 +50,12 @@
 
     .panel-wrapper {
       height: 100%;
-      position: relative;
+      display: grid;
+      grid-gap: 10px;
+      // position: relative;
 
       .panel-container {
-        position: absolute;
+        // position: absolute;
         height: 100%;
         width: 100%;
       }

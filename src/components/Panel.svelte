@@ -1,36 +1,35 @@
 <script>
   export let panel;
 
-  let panelType;
-  console.log(panel.content.length);
+  // let panelType;
 
-  switch (panel.content.length) {
-    case 1:
-      panelType = "default";
-      break;
-    case 2:
-      panelType = "split";
-      break;
-    case 6:
-      panelType = "grid";
-      break;
-    default:
-      panelType = "default";
-      break;
-  }
+  // switch (panel.content.length) {
+  //   case 1:
+  //     panelType = "default";
+  //     break;
+  //   case 2:
+  //     panelType = "split";
+  //     break;
+  //   case 6:
+  //     panelType = "grid";
+  //     break;
+  //   default:
+  //     panelType = "default";
+  //     break;
+  // }
 </script>
 
 <div class="panel">
-  <ul class={`panel-content ${panelType}`}>
+  <ul class={`panel-content ${panel.type}`}>
     {#each panel.content as content}
-      <li>{content.altText}</li>
+      <li><img src={content.img} alt={content.altText} /></li>
     {/each}
   </ul>
 </div>
 
 <style lang="scss">
   .panel {
-    height: 100%;
+    height: 500px;
     width: 100%;
     // border: 5px solid black;
 
@@ -65,6 +64,12 @@
         height: 100%;
         width: 100%;
         border: 5px solid black;
+
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
       }
     }
   }
