@@ -9,6 +9,10 @@
   let isTransitioning = false;
 
   onMount(() => {
+    document.addEventListener("scroll", () => {
+      // console.log(window.scrollY);
+    });
+
     document.addEventListener("wheel", (e) => {
       if (isTransitioning) return;
       // TODO: Debounce/throttle
@@ -38,6 +42,7 @@
         out:fly={{ y: -2000, duration: 500 }}>
         <Panel {panel} />
       </div>
+      <!-- <div class="separator" /> -->
       <!-- {/if} -->
     {/each}
   </div>
@@ -50,14 +55,24 @@
 
     .panel-wrapper {
       height: 100%;
+      // display: flex;
+      // flex-direction: column;
       display: grid;
       grid-gap: 10px;
+      // TODO: Hardcoded, figure out why auto stuff isn't working
+      grid-template-rows: repeat(3, 90vh);
       // position: relative;
 
       .panel-container {
         // position: absolute;
         height: 100%;
         width: 100%;
+      }
+
+      .separator {
+        height: 10px;
+        width: 100%;
+        z-index: 5;
       }
     }
   }
